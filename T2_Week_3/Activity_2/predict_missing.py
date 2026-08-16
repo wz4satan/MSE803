@@ -357,7 +357,7 @@ def best_filled() -> pd.DataFrame:
                 (res["predictor"], res["lin"]["r2"], res["lin_pred"][i])
             )
     for (r, tgt), cand in cands.items():
-        pred, r2, val = max(cand, key=lambda x: x[1])
+        pred, _r2, val = max(cand, key=lambda x: x[1])
         filled.at[r, tgt] = val
         used[(r, tgt)] = f"{pred} (linear)"
     # build an Estimated flag per row listing which cells were estimated
