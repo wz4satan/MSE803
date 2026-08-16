@@ -183,6 +183,13 @@ def _fmt_str(x):
     return "" if pd.isna(x) else str(x)
 
 
+def _fmt_csv_num(x):
+    """Number for CSV output: integer when whole, blank when missing."""
+    if pd.isna(x):
+        return ""
+    return f"{float(x):,.0f}".replace(",", "")
+
+
 # --------------------------------------------------------------------------- #
 # 3. Compute the four metrics
 # --------------------------------------------------------------------------- #
@@ -436,6 +443,21 @@ def main() -> None:
     with open(report_path, "w", encoding="utf-8") as fh:
         fh.write(report)
 
+    # Export the cleaned dataset as CSV (dates formatted, blanks for missing)
+    csv_df = pd.DataFrame(
+        {
+            "ID": [_fmt_csv_num(x) for x in cleaned_df["ID"]],
+            "Name": [_fmt_str(x) for x in cleaned_df["Name"]],
+            "Age": [_fmt_csv_num(x) for x in cleaned_df["Age"]],
+            "Net worth": [_fmt_csv_num(x) for x in cleaned_df["Net worth"]],
+            "Country": [_fmt_str(x) for x in cleaned_df["Country"]],
+            "Salary": [_fmt_csv_num(x) for x in cleaned_df["Salary"]],
+            "Join Date": [_fmt_date(x) for x in cleaned_df["Join Date"]],
+        }
+    )
+    csv_path = os.path.join(RESULTS_DIR, "cleaned_data.csv")
+    csv_df.to_csv(csv_path, index=False)
+
     print("=" * 78)
     print("DATA ANALYSIS — Sample Dataset")
     print("=" * 78)
@@ -460,6 +482,7 @@ def main() -> None:
         print(f"{a + ' ↔ ' + b:<22} {n:>3} {cov_pop:>15.2f} {cov_samp:>18.2f}")
     print(f"\nReport written to: {report_path}")
     print(f"Charts written to: {CHARTS_DIR}")
+    print(f"Cleaned dataset written to: {csv_path}")
 
 
 if __name__ == "__main__":
