@@ -33,6 +33,7 @@ Outputs written to `results/`:
 ```
 results/
 ├── report.md               # import → cleaning → metrics → charts
+├── cleaned_data.csv        # cleaned dataset (numeric, standardised, dates)
 └── charts/                 # 3 PNG charts (data quality, metrics, covariance)
 ```
 
@@ -119,4 +120,5 @@ in the same direction (Age ↔ Salary weakest, Age ↔ Net worth strongest of th
 | `requirements.txt` | Python dependencies for reproducible setup. |
 | `Sample_dataset.csv` | The raw input data. |
 | `results/report.md` | Latest result — full report (data import, cleaning, metrics, charts). |
+| `results/cleaned_data.csv` | Cleaned dataset (numeric, standardised country, parsed dates). |
 | `results/charts/` | Charts: data quality, metrics, covariance scatter. |
