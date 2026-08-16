@@ -1,0 +1,11 @@
+ID,Name,Age,Net worth,Country,Salary,Join Date,Estimated
+1,Alice,25,30000,NZ,55000,2020-01-15,
+2,Bob,29,38403,NZ,60000,2020-02-20,Age=Salary (linear); Net worth=Salary (linear)
+2,Bob,30,35000,NZ,62527,2020-02-20,Salary=Age (linear)
+4,Charlie,35,40000,AUS,72000,,
+5,David,38,47885,NZ,68000,2019-11-01,Net worth=Age (linear)
+,Eve,29,22000,AUS,59000,,
+7,,40,55000,NZ,65000,2018-05-30,
+8,Grace,22,28000,,64000,2021-07-25,
+9,Heidi,,,AUS,,2021-07-25,
+10,Ivan,27,60000,NZ,58000,2019-03-15,
